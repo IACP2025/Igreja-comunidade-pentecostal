@@ -1,104 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0757b8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igreja IACP — Cambira</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        :root { --azul: #0a3d62; --dourado: #f9ca24; --fundo: #f4f7fb; }
+        body { background: var(--fundo); padding-bottom: 70px; }
+        .tela { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; }
 
-<title>Igreja Assembleia Comunidade Pentecostal</title>
+        header {
+            background: linear-gradient(135deg, var(--azul), #3c6382);
+            color: white; padding: 1.5rem; text-align: center;
+        }
+        .cruz { font-size: 2rem; margin-bottom: 0.3rem; }
+        header h1 { font-size: 1.1rem; }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+        .aba { display: none; padding: 1rem; }
+        .aba.ativa { display: block; }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
-  color: #222;
-}
+        .destaque {
+            background: linear-gradient(135deg, #f9ca24, #f0932b);
+            padding: 1.2rem; border-radius: 12px; text-align: center; margin-bottom: 1rem;
+        }
+        .destaque h2 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .destaque .data { font-weight: bold; }
 
-.app {
-  max-width: 600px;
-  margin: auto;
-  min-height: 100vh;
-  background: white;
-}
+        h3 { color: var(--azul); margin: 1rem 0 0.5rem; }
+        .caixa {
+            background: var(--fundo); border-radius: 10px; padding: 1rem;
+            margin-bottom: 0.7rem; border-left: 4px solid #3c6382;
+        }
 
-header {
-  background: linear-gradient(135deg, #0757b8, #0b78e8);
-  color: white;
-  padding: 28px 20px;
-  border-radius: 0 0 25px 25px;
-}
+        .navegacao {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 600px; background: white; display: flex;
+            justify-content: space-around; padding: 0.6rem 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-btn {
+            display: flex; flex-direction: column; align-items: center;
+            background: none; border: none; color: #888; font-size: 0.7rem; cursor: pointer;
+        }
+        .nav-btn.ativo { color: var(--azul); font-weight: bold; }
+        .nav-btn span { font-size: 1.2rem; margin-bottom: 0.2rem; }
 
-header h1 {
-  margin: 0;
-  font-size: 25px;
-}
+        .chat-area { border: 1px solid #ddd; border-radius: 10px; padding: 1rem; height: 250px; overflow-y: auto; margin-bottom: 0.8rem; background: #fafafa; }
+        .msg { margin-bottom: 0.8rem; }
+        .msg .nome { font-weight: bold; color: var(--azul); font-size: 0.85rem; }
+        .msg .texto { background: white; padding: 0.6rem; border-radius: 8px; margin-top: 0.2rem; }
+        .chat-input { display: flex; gap: 0.5rem; }
+        .chat-input input { flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; }
+        .chat-input button { padding: 0.8rem 1rem; background: var(--azul); color: white; border: none; border-radius: 8px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="tela">
+        <header>
+            <div class="cruz">✝</div>
+            <h1>Igreja Assembléia Comunidade Pentecostal</h1>
+            <p style="opacity:0.9; font-size:0.85rem;">Cambira — PR</p>
+        </header>
 
-header p {
-  margin: 8px 0 0;
-  opacity: .9;
-}
+        <div id="inicio" class="aba ativa">
+            <div class="destaque">
+                <h2>🎉 1º ANIVERSÁRIO 🎉</h2>
+                <p class="data">21 e 22 de Novembro — 18h30</p>
+                <p style="margin-top: 0.5rem; font-size:0.85rem;">📍 Anfiteatro José Beline — Rua Canadá, 320</p>
+            </div>
+            <h3>📋 Escala de Hoje</h3>
+            <div class="caixa"><strong>Culto — 19h</strong><br>🎤 Louvor: —<br>📖 Palavra: —<br>🙏 Oração: —</div>
+            <h3>📢 Avisos</h3>
+            <div class="caixa">🔔 Ensaio para aniversário — sábado às 14h!</div>
+            <div class="caixa">🙏 Todos estão convidados!</div>
+        </div>
 
-.content {
-  padding: 20px;
-  padding-bottom: 90px;
-}
+        <div id="agenda" class="aba">
+            <h3>📅 Próximos Eventos</h3>
+            <div class="caixa"><strong>21/11</strong> — 1º Aniversário — 18h30</div>
+            <div class="caixa"><strong>22/11</strong> — 2º Aniversário — 18h30</div>
+            <div class="caixa"><strong>Quinta</strong> — Culto de Oração — 19h</div>
+            <div class="caixa"><strong>Domingo</strong> — Culto de Adoração — 19h</div>
+        </div>
 
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
+        <div id="aniversarios" class="aba">
+            <h3>🎂 Aniversariantes</h3>
+            <div class="caixa"><strong>05/10</strong> — Maria Silva 🎉</div>
+            <div class="caixa"><strong>12/10</strong> — João Santos 🎉</div>
+            <div class="caixa"><strong>18/10</strong> — Ana Costa 🎉</div>
+            <div class="caixa"><strong>25/10</strong> — Pedro Lima 🎉</div>
+        </div>
 
-.card h2 {
-  margin-top: 0;
-  color: #0757b8;
-}
+        <div id="midia" class="aba">
+            <h3>🎵 Músicas</h3>
+            <div class="caixa"><strong>Louvor de Adoração</strong><br><audio controls style="width:100%; margin-top:0.5rem;"><source src="#" type="audio/mpeg"></div>
+            <h3 style="margin-top: 1rem;">📹 Vídeos</h3>
+            <div class="caixa"><strong>Pregação — Tema</strong><br><video controls style="width:100%; margin-top:0.5rem;"><source src="#" type="video/mp4"></video></div>
+        </div>
 
-.card p {
-  line-height: 1.5;
-}
+        <div id="chat" class="aba">
+            <h3>💬 Mural</h3>
+            <div class="chat-area" id="caixa-msg">
+                <div class="msg"><div class="nome">Igreja</div><div class="texto">Bem-vindos! Deixem sua mensagem! 🙏</div></div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="nome" placeholder="Seu nome">
+                <input type="text" id="mensagem" placeholder="Mensagem...">
+                <button onclick="enviar()">Enviar</button>
+            </div>
+        </div>
+    </div>
 
-.button {
-  display: block;
-  width: 100%;
-  border: 0;
-  background: #0757b8;
-  color: white;
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 16px;
-  margin-top: 10px;
-}
+    <nav class="navegacao">
+        <button class="nav-btn ativo" onclick="mudar('inicio', this)"><span>🏠</span> Início</button>
+        <button class="nav-btn" onclick="mudar('agenda', this)"><span>📅</span> Agenda</button>
+        <button class="nav-btn" onclick="mudar('aniversarios', this)"><span>🎂</span> Aniversários</button>
+        <button class="nav-btn" onclick="mudar('midia', this)"><span>🎵</span> Mídia</button>
+        <button class="nav-btn" onclick="mudar('chat', this)"><span>💬</span> Chat</button>
+    </nav>
 
-nav {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 600px;
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 5px;
-  box-shadow: 0 -3px 15px rgba(0,0,0,.12);
-}
-
-nav button {
-  background: none;
-  border: 0;
-  color: #555;
-  font-size: 12px;
-}
-
-nav span {
-  display: block;
-  font-size: 23px;
-  margin-bottom: 3
+    <script>
+        function mudar(id, botao) {
+            document.querySelectorAll('.aba').forEach(a => a.classList.remove('ativa'));
+            document.getElementById(id).classList.add('ativa');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('ativo'));
+            botao.classList.add('ativo');
+        }
+        function enviar() {
+            const nome = document.getElementById('nome').value.trim();
+            const texto = document.getElementById('mensagem').value.trim();
+            if (!nome || !texto) return;
+            const caixa = document.getElementById('caixa-msg');
+            const nova = document.createElement('div');
+            nova.className = 'msg';
+            nova.innerHTML = `<div class="nome">${nome}</div><div class="texto">${texto}</div>`;
+            caixa.appendChild(nova);
+            caixa.scrollTop = caixa.scrollHeight;
+            document.getElementById('mensagem').value = '';
+        }
+    </script>
+</body>
+</html>
